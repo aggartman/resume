@@ -1,8 +1,9 @@
-//import { useState } from 'react'
-
 import './App.css'
 import 'primereact/resources/themes/lara-dark-amber/theme.css'
 import 'primeflex/primeflex.css';
+import 'primeicons/primeicons.css';
+import JobExperiences from "./jobExperience.tsx";
+
 
 function App() {
 
@@ -16,24 +17,14 @@ function App() {
             </div>
             <div className='App-body flex-column flex-grow-1 flex align-items-center justify-content-center gap-0 w-full max-w-full'>
                 <h2 className='block text-left font-bold px-3 border-50 underline'>Experience</h2>
-                <div className='flex-row flex w-full align-content-center justify-content-center gap-2'>
-                <div className='card flex align-content-center justify-content-center min-w-min w-full'>
-                    <h3>CrowdStrike</h3>
+                <div className='flex-row flex-wrap flex align-items-center justify-content-center gap-2 w-full max-w-full'>
+                    <JobExperiences />
                 </div>
-                <div className='card flex align-content-center justify-content-center min-w-min w-full'>
-                    <h3>CVS Health</h3>
-                    {/*<h5>Junior Salesforce Developer</h5>*/}
-                    {/*<p>Nov 2021 - Oct 2022</p>*/}
-                    {/*<p>*/}
-                    {/*Creation of custom applications and objects to bring teams online in Salesforce*/}
-                    {/*Participated in reimagining current business workflows and processes to better align with Salesforce and currently deployed functionalities.*/}
-                    {/*Help to lead a team of developers to stay on Sprint timeline and improve workflows and practices to be more effective and efficient.*/}
-                    {/*Participates in business and stakeholder meetings to demonstrate new work, ask questions regarding current business practices and clarify new working models for the business team.*/}
-                    {/*</p>*/}
-                </div>
-                <div className='card flex align-content-center justify-content-center min-w-min w-full'>
-                    <h3>Odin Project</h3>
-                </div>
+            </div>
+            <div className='footer absolute bottom-0 flex-row flex w-full max-w-full gap-1 align-content-center'>
+                <div className='socialIcons absolute right-0 mr-4 mb-6 flex align-items-center justify-content-center gap-2' style={{color: 'var(--indigo-500'}}>
+                    <a className='pi pi-github cursor-pointer' style={{fontSize: '1.5rem'}} href={'https://github.com/aggartman'} target="_blank" rel="noopener noreferrer" ></a>
+                    <a className='pi pi-linkedin cursor-pointer'  style={{fontSize: '1.5rem'}} href={'https://www.linkedin.com/in/austinrizer/'} target="_blank" rel="noopener noreferrer" ></a>
                 </div>
             </div>
         </div>
