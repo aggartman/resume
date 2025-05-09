@@ -1,0 +1,62 @@
+/* JobExperiences.css */
+.experiences-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
+}
+
+.experience-card {
+    flex: 0 0 calc(33.333% - 1rem); /* For three cards per row, adjust as needed */
+    min-width: 250px; /* Minimum width for small screens */
+    max-width: 350px; /* Maximum width for regular cards */
+    transition: transform 3s, box-shadow 0.3s;
+    cursor: pointer;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: var(--teal-800);
+    box-sizing: border-box;
+}
+
+/* Maintain original width when not expanded */
+.experience-card:not(.expanded) {
+    width: auto;
+}
+
+/* Only change width when expanded */
+.experience-card.expanded {
+    flex: 0 0 100%; /* Take full width when expanded */
+    max-width: 100%;
+    order: -1; /* Move to the top of the flex container */
+}
+
+.card-header {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.card-info {
+    margin-top: .2rem;
+    text-align: left;
+}
+
+.card-dates {
+    font-style: italic;
+    margin-bottom: 0.5rem;
+}
+
+.card-description {
+    text-align: justify;
+}
+
+/* For mobile screens */
+@media (max-width: 768px) {
+    .experience-card {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
