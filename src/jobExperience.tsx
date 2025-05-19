@@ -8,7 +8,6 @@ type JobExperience = {
     title?: string;
     dates?: string;
     description?: string;
-    expanded?: boolean;
 };
 
 const JobExperiences: React.FC = () => {
@@ -40,35 +39,30 @@ const JobExperiences: React.FC = () => {
         }
     ];
 
-    // State to track expanded state of each card
-    const [experiences, setExperiences] = useState(
-        initialExperiences.map(exp => ({...exp, expanded: false}))
-    );
+    const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
 
-    // Function to toggle expansion of a card
     const toggleExpand = (index: number) => {
-        setExperiences(experiences.map((exp, i) =>
-            i === index ? {...exp, expanded: !exp.expanded} : exp
-        ));
+        setExpandedIndex(expandedIndex === index ? null : index);
     };
 
     return (
-        <div className="experiences-container">
-            {experiences.map((exp, index) => (
+        <div className="job-experiences-container w-full">
+            {initialExperiences.map((exp, index) => (
                 <div
                     key={index}
-                    className={`experience-card ${exp.expanded ? 'expanded' : ''}`}
+                    className={`job-card mb-3 shadow-2 ${expandedIndex === index ? 'expanded' : ''}`}
                     onClick={() => toggleExpand(index)}
                 >
-                    <div className="card-header">
-                        <h3>{exp.company}</h3>
+                    <div className="card-header p-3 flex align-items-center justify-content-between">
+                        <h3 className="m-0">{exp.company}</h3>
+                        <i className={`pi ${expandedIndex === index ? 'pi-chevron-up' : 'pi-chevron-down'}`}></i>
                     </div>
 
-                    {exp.expanded && (
-                        <div className='card-info'>
-                            {exp.title && <h4>{exp.title}</h4>}
-                            {exp.dates && <p className="card-dates">{exp.dates}</p>}
-                            {exp.description && <p className="card-description">{exp.description}</p>}
+                    {expandedIndex === index && (
+                        <div className="card-details p-3 pt-0 border-top-1 border-primary-100">
+                            {exp.title && <h4 className="mt-2 mb-1">{exp.title}</h4>}
+                            {exp.dates && <p className="text-sm text-color-secondary mt-0 mb-2">{exp.dates}</p>}
+                            {exp.description && <p className="line-height-3">{exp.description}</p>}
                         </div>
                     )}
                 </div>
